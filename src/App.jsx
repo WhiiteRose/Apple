@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Features from './components/Features';
+import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Highlights from './components/Highlights';
 import Navbar from './components/Navbar';
@@ -20,6 +21,7 @@ const App = () => {
       <Performance />
       <Features />
       <Highlights />
+      <Footer />
     </main>
   );
 };
