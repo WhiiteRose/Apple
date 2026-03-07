@@ -1,23 +1,23 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
-  font-family: "Regular";
-  src: url("/fonts/regular.otf");
+  font-family: 'Regular';
+  src: url('/fonts/regular.otf');
 }
 
 @font-face {
-  font-family: "Medium";
-  src: url("/fonts/medium.otf");
+  font-family: 'Medium';
+  src: url('/fonts/medium.otf');
 }
 
 @font-face {
-  font-family: "SemiBold";
-  src: url("/fonts/semibold.otf");
+  font-family: 'SemiBold';
+  src: url('/fonts/semibold.otf');
 }
 
 @font-face {
-  font-family: "Bold";
-  src: url("/fonts/bold.otf");
+  font-family: 'Bold';
+  src: url('/fonts/bold.otf');
 }
 
 * {
@@ -25,20 +25,14 @@
 }
 
 :root {
-  --gradient-color: linear-gradient(
-    to bottom right,
-    #0894ff 0%,
-    #c959dd 34%,
-    #ff2e54 68%,
-    #ff9004
-  );
+  --gradient-color: linear-gradient(to bottom right, #0894ff 0%, #c959dd 34%, #ff2e54 68%, #ff9004);
 }
 
 @theme {
-  --font-regular: "Regular";
-  --font-medium: "Medium";
-  --font-semibold: "SemiBold";
-  --font-bold: "Bold";
+  --font-regular: 'Regular';
+  --font-medium: 'Medium';
+  --font-semibold: 'SemiBold';
+  --font-bold: 'Bold';
   --color-primary: #0071e3;
   --color-dark-100: #86868b;
   --color-dark-200: #2e2e30;
@@ -185,22 +179,35 @@ body {
 
     .media {
       @apply relative lg:overflow-hidden;
+      transform: translateZ(0);
+      backface-visibility: hidden;
 
       video {
         @apply w-full object-cover object-center;
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        pointer-events: none;
       }
 
       .mask {
         @apply absolute h-full top-0 lg:-top-20 xl:top-0;
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        pointer-events: none;
 
         img {
           @apply h-full scale-150 lg:scale-100;
-          transform: matrix(80, 0, 0, 80, 0, 0);
+          transform: matrix(80, 0, 0, 80, 0, 0) translateZ(0);
+          will-change: transform;
+          backface-visibility: hidden;
+          transform-origin: center center;
         }
 
         @media (max-width: 1024px) {
           img {
-            transform: matrix(1, 0, 0, 1, 0, 0);
+            transform: matrix(1, 0, 0, 1, 0, 0) translateZ(0);
           }
         }
       }
@@ -208,6 +215,7 @@ body {
 
     .content {
       @apply relative z-10 my-5 lg:-mt-40 bg-black font-semibold text-xl text-dark-100 lg:opacity-0;
+      will-change: opacity, transform;
 
       .wrapper {
         @apply container mx-auto px-5 pb-20 2xl:px-0 flex flex-col lg:flex-row justify-center gap-20;
@@ -347,20 +355,14 @@ body {
           border: 3px solid transparent; /* !important */
 
           ::before {
-            content: "";
+            content: '';
             pointer-events: none;
             position: absolute;
             inset: 0px;
             z-index: -1;
             margin: -5px; /* !important */
             border-radius: 24px; /* !important */
-            background: linear-gradient(
-              91deg,
-              #0096ff 0%,
-              #bb64ff 42%,
-              #f2416b 74%,
-              #eb7500 100%
-            );
+            background: linear-gradient(91deg, #0096ff 0%, #bb64ff 42%, #f2416b 74%, #eb7500 100%);
           }
 
           p {
